@@ -1,0 +1,107 @@
+/* styles.css */
+body {
+    background-color: #f5f5dc; /* Kremowe tło dla całej strony */
+    font-family: Arial, sans-serif; /* Ustawienie czcionki dla całej strony */
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto; /* Wyśrodkowanie kontenera */
+    text-align: center;
+}
+
+.post {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #ffa500; /* Pomarańczowe tło dla każdego posta */
+    cursor: pointer; /* Dodaje wskaźnik, wskazujący, że można kliknąć */
+}
+
+.post h2 {
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+    transition: all 0.3s ease; /* Dodaje animację do tytułu */
+}
+
+.post-content {
+    display: none; /* Ukrywa treść posta domyślnie */
+    text-align: left; /* Wyrównanie tekstu do lewej */
+}
+
+.comment-form {
+    margin: 20px 0;
+}
+
+.submit-btn {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.back-link {
+    display: block;
+    margin-top: 20px;
+}
+
+select, button {
+    margin: 5px;
+    padding: 10px;
+}
+
+
+/* styles.css */
+.collapsible {
+    font-size: 24px; /* Zwiększa rozmiar czcionki tytułów */
+    font-weight: bold; /* Pogrubienie czcionki */
+    color: #333; /* Ciemnoszara czcionka, można dostosować do preferencji */
+    cursor: pointer; /* Dodaje wskaźnik, aby pokazać, że można kliknąć */
+    padding: 10px 0; /* Dodaje padding dla lepszego wyglądu */
+    margin: 10px 0; /* Dodaje margines wokół tytułów */
+    border-bottom: 1px solid #ccc; /* Opcjonalna cienka linia pod tytułem */
+    transition: color 0.3s ease; /* Animacja zmiany koloru przy najechaniu */
+    max-width: 100%; /* Ogranicza szerokość do 100% szerokości okna */
+    padding: 20px; /* Daje trochę przestrzeni wewnątrz kontenera */
+    box-sizing: border-box; /* Włącza box-sizing dla prawidłowego obliczania szerokości */
+}
+
+.collapsible:hover {
+    color: #007BFF; /* Zmienia kolor przy najechaniu, opcjonalnie */
+}
+
+.collapsible:after {
+    content: '+';
+    color: #777;
+    font-weight: bold;
+    float: right;
+}
+
+.collapsible.active:after {
+    content: '-';
+    display: block; /* Pokaż treść, gdy 'collapsible' jest aktywny */
+}
+
+/* Styl dla elementów z tekstem, które mogą potrzebować łamania */
+.text-content, .post-content, p {
+    word-wrap: break-word; /* Stare, wspierane w wielu przeglądarkach */
+    overflow-wrap: break-word; /* Nowocześniejsza, preferowana wersja word-wrap */
+    width: 100%; /* Ustawia szerokość na 100% swojego kontenera */
+}
+
+}
+
+.content {
+    padding: 0 18px;
+    display: none; /* To sprawia, że treść jest domyślnie ukryta */
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+
+
+.post-content {
+    display: none; /* Start as hidden */
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+}

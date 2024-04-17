@@ -1,0 +1,31 @@
+{% load static %}
+
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Blog dla Programistów</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="{% url 'home' %}">Strona Główna</a>
+            {% if user.is_authenticated %}
+                <a href="{% url 'logout' %}">Wyloguj</a>
+            {% else %}
+                <a href="{% url 'login' %}">Zaloguj</a>
+            {% endif %}
+        </nav>
+    </header>
+    <main>
+        {% block content %}
+        <!-- Treść dynamiczna strony będzie tutaj wstrzykiwana przez Django. -->
+        {% endblock %}
+    </main>
+    <footer>
+        <p>&copy; 2024 Blog dla Programistów</p>
+    </footer>
+</body>
+</html>
+
