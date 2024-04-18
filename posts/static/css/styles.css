@@ -18,6 +18,19 @@ body {
     cursor: pointer; /* Dodaje wskaźnik, wskazujący, że można kliknąć */
 }
 
+.post a {
+    color: #007BFF; /* Ustawienie koloru linków */
+    text-decoration: none; /* Usuwanie podkreślenia linków */
+    transition: all 0.3s ease; /* Animacja dla płynnych zmian */
+}
+
+.post a:hover, .post a:focus {
+    color: #0056b3; /* Ciemniejszy kolor przy najechaniu lub fokusie */
+    text-decoration: underline; /* Dodanie podkreślenia przy najechaniu lub fokusie */
+    outline: none; /* Usuwanie zewnętrznej obwódki podczas fokusowania */
+}
+
+
 .post h2 {
     font-weight: bold;
     color: #333;
@@ -66,6 +79,11 @@ select, button {
     max-width: 100%; /* Ogranicza szerokość do 100% szerokości okna */
     padding: 20px; /* Daje trochę przestrzeni wewnątrz kontenera */
     box-sizing: border-box; /* Włącza box-sizing dla prawidłowego obliczania szerokości */
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap; /* Zapewnia, że tekst nie przechodzi do nowej linii */
 }
 
 .collapsible:hover {

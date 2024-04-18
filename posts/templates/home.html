@@ -27,10 +27,10 @@
                 <p>{{ comment.author.username }} napisał(a):</p>
                 <p>{{ comment.content }}</p>
             {% endfor %}
-            <h3>Kategorie</h3>
-            {% for category in Category.objects.all %}
-                <a href="{% url 'posts_by_category' category.id %}">{{ category.name }}</a><br>
-            {% endfor %}
+<!--            <h3>Kategorie</h3>-->
+<!--            {% for category in Category.objects.all %}-->
+<!--                <a href="{% url 'posts_by_category' category.id %}">{{ category.name }}</a><br>-->
+<!--            {% endfor %}-->
         </div>
         {% if user.is_authenticated and user == post.author %}
             <a href="{% url 'edit_post' post.id %}" class="btn btn-info">Edytuj</a>

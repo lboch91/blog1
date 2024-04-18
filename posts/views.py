@@ -46,9 +46,7 @@ def posts_by_category(request, category):
     return render(request, 'posts/posts_by_category.html', {'posts': posts, 'category': category})
 
 
-from django.shortcuts import render, redirect
-from django.contrib.auth import login, authenticate
-from .forms import SignUpForm  # Zakładam, że masz już zdefiniowany SignUpForm
+from .forms import SignUpForm
 
 def signup(request):
     if request.method == 'POST':
@@ -66,7 +64,6 @@ def signup(request):
 
 
 from django.contrib.auth import authenticate, login
-from django.shortcuts import render, redirect
 from .forms import LoginForm
 
 def user_login(request):
@@ -84,9 +81,8 @@ def user_login(request):
     return render(request, 'registration/login.html', {'form': form})
 
 
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import redirect
 from .forms import PostForm
-from .models import Post
 from django.contrib.auth.decorators import login_required
 
 @login_required
@@ -113,9 +109,6 @@ def delete_post(request, post_id):
     return redirect('post_detail', post_id=post.id)
 
 
-from django.shortcuts import render, get_object_or_404
-from .models import Post
-
 def post_detail(request, post_id):
     post = get_object_or_404(Post, id=post_id)
     image_url = post.image.url if post.image and hasattr(post.image, 'file') else None
@@ -132,8 +125,8 @@ class SignUpView(generic.CreateView):
     template_name = 'registration/signup.html'
 
 
-from django.shortcuts import render, get_object_or_404
-from .models import Post, Category
+from django.shortcuts import get_object_or_404
+
 
 def posts_by_category(request, category):
     posts = Post.objects.filter(category=category).order_by('-date_posted')
