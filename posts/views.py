@@ -27,6 +27,11 @@ def add_comment(request, post_id):
         form = CommentForm()
     return render(request, 'posts/add_comment.html', {'form': form})
 
+from django.contrib.auth.decorators import user_passes_test
+
+def is_admin(user):
+    return user.is_admin
+
 @login_required
 def add_post(request):
     if request.method == 'POST':

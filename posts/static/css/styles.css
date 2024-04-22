@@ -123,3 +123,15 @@ select, button {
     overflow: hidden;
     transition: max-height 0.2s ease-out;
 }
+
+
+/* Na przykład w pliku static/css/style.css */
+.btn {
+    padding: 10px 20px;
+    color: white;
+    background-color: #007BFF;
+    border: none;
+    border-radius: 5px;
+}
+.btn-primary { background-color: #0069D9; }
+.btn-secondary { background-color: #6c757d; }
