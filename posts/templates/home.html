@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <h1>Blog dla Programistów</h1>
+    {% if user.is_authenticated %}
+        <a href="{% url 'add_post' %}" class="btn btn-primary">Dodaj nowy post</a>
+    {% endif %}
+    <hr>
+    {% for post in posts %}
+    <div class="post">
+        <!-- Dodaj klasę `collapsible` do elementu h2 -->
+        <h2 class="collapsible">{{ post.title }}</h2>
+        <div class="post-content">
+            {% if post.image %}
+                <img src="{{ post.image.url }}" alt="{{ post.title }}" style="width:100%;max-width:600px;">
+            {% else %}
+                <p>Brak obrazu.</p>
+            {% endif %}
+            <p>Autor: {{ post.author.username }} | Data: {{ post.date_posted }}</p>
+            <p>{{ post.content }}</p>
+            <p>Kategoria: {{ post.get_category_display }}</p>
+            {% if user.is_authenticated %}
+                <a href="{% url 'add_comment' post.id %}" class="btn btn-secondary">Dodaj komentarz</a>
+            {% endif %}
+            <h3>Komentarze:</h3>
+            {% for comment in post.comments.all %}
+                <p>{{ comment.author.username }} napisał(a):</p>
+                <p>{{ comment.content }}</p>
+            {% endfor %}
+<!--            <h3>Kategorie</h3>-->
+<!--            {% for category in Category.objects.all %}-->
+<!--                <a href="{% url 'posts_by_category' category.id %}">{{ category.name }}</a><br>-->
+<!--            {% endfor %}-->
+        </div>
+        {% if user.is_authenticated and user == post.author %}
+            <a href="{% url 'edit_post' post.id %}" class="btn btn-info">Edytuj</a>
+            <a href="{% url 'delete_post' post.id %}" class="btn btn-danger" onclick="return confirm('Czy na pewno chcesz usunąć ten post?');">Usuń</a>
+        {% endif %}
+    </div>
+    <hr>
+    {% endfor %}
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var coll = document.getElementsByClassName("collapsible");
+    for (var i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+            if (content.style.display === "block") {
+                content.style.display = "none";
+            } else {
+                content.style.display = "block";
+            }
+        });
+    }
+});
+</script>
+{% endblock %}
